@@ -44,3 +44,14 @@ export function getUser() {
   // If there's a token, return the user in the payload, otherwise return null
   return token ? JSON.parse(atob(token.split('.')[1])).user : null;
 }
+
+
+//This is only for testing validating the token
+// You do not need this your app
+export function checkToken() {
+  // async way
+  // const date = new Date(await usersAPI.checkToken());
+  // retrun date
+  return usersAPI.checkToken()
+    .then(dateStr => new Date(dateStr));
+}
