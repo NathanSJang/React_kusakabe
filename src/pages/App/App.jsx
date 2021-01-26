@@ -7,6 +7,7 @@ import AuthPage from '../AuthPage/AuthPage';
 import NewOrderPage from '../NewOrderPage/NewOrderPage';
 import OrderHistoryPage from '../OrderHistoryPage/OrderHistoryPage';
 import NavBar from '../../components/NavBar/NavBar';
+import Footer from '../../components/Footer/Footer';
 import HomePage from '../HomePage/HomePage';
 
 import useStyles from "./styles";
@@ -38,7 +39,7 @@ export default function App() {
               <AuthPage setUser={setUser}/>
           }
       </Container>
-
+          <Footer />
     </Container>
   );
 }

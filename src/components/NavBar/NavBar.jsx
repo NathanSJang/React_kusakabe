@@ -1,6 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import { AppBar, Toolbar, Typography, Button, Link } from '@material-ui/core'
-import grey from "@material-ui/core/colors/grey";
+import { Toolbar, Typography, Link } from '@material-ui/core'
 import Logo from '../Logo/Logo'
 import * as userService from '../../utilities/users-service';
 

@@ -1,4 +1,7 @@
-import { Typography } from '@material-ui/core'
+import { Paper, Typography } from '@material-ui/core';
+
+import Locations from '../../components/Location/Location';
+
 
 export default function HomePage() {
     return(
@@ -12,15 +15,22 @@ export default function HomePage() {
           frameborder="0"
           allowfullscreen
           />
-          <Typography>
-          Welcome to KUSAKABE!
-          We are the only restaurant in San Francisco that offers Kyoto style sushi takeout.
-          </Typography>
-          <Typography>
-          What is OMIYAGE?
-          Omiyage not only means “take-out”, but also implies as a gift to thank your beloved family members, dear friends, and those who support you, or to give them happiness.
-          </Typography>
-          
+            <Typography variant="h3">
+              Welcome to KUSAKABE!
+            </Typography>
+            <Typography variant="h6">
+              We are the only restaurant in San Francisco that offers Kyoto style sushi takeout.
+            </Typography>
+            <Typography variant="h3">
+            What is OMIYAGE?
+            </Typography>
+            <Typography>
+              Omiyage not only means “take-out”, but also implies as a gift to thank your beloved family members, dear friends, and those who support you, or to give them happiness.
+            </Typography>
+          <div>
+            take out button
+          </div>
+          <Locations />
       </div>
     );
 }
