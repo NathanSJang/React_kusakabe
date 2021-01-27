@@ -1,4 +1,5 @@
-import { Paper, Typography } from '@material-ui/core';
+import { Paper, Typography, Button } from '@material-ui/core/';
+import CreaditCard from '@material-ui/icons/CreditCard'
 
 import Locations from '../../components/Location/Location';
 
@@ -15,22 +16,27 @@ export default function HomePage() {
           frameborder="0"
           allowfullscreen
           />
-            <Typography variant="h3">
+            <Typography variant="h4">
               Welcome to KUSAKABE!
             </Typography>
-            <Typography variant="h6">
+            <Typography variant="subtitle1">
               We are the only restaurant in San Francisco that offers Kyoto style sushi takeout.
             </Typography>
-            <Typography variant="h3">
-            What is OMIYAGE?
+            <Typography variant="h4">
+              What is OMIYAGE?
             </Typography>
-            <Typography>
+            <Typography variant="hsubtitle1">
               Omiyage not only means “take-out”, but also implies as a gift to thank your beloved family members, dear friends, and those who support you, or to give them happiness.
             </Typography>
           <div>
-            take out button
+            choose your Omiyage for 
+            <Button variant="contained" color="default" startIcon={<CreaditCard />}>Pick up</Button> 
+            or 
+            <Button variant="contained" color="default" startIcon={<CreaditCard />}>Delivery</Button>
           </div>
+          <div>
           <Locations />
+          </div>
       </div>
     );
 }

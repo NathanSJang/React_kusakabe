@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { useEffect, useState, } from 'react';
+import { Route, Switch, Redirect, useHistory } from 'react-router-dom';
 import { getUser } from '../../utilities/users-service';
 import { Container, AppBar, Typography, Grow, Grid } from '@material-ui/core';
 import './App.css';
@@ -23,11 +23,10 @@ export default function App() {
         <NavBar user={user} setUser={setUser} />
       </AppBar>
       <Container className={classes.mainContainer} container >
-          { user ?
               <>
                 <Switch>
-                  <Route path="/orders">
-                    <OrderHistoryPage />
+                  <Route path="/log-in">
+                    <AuthPage setUser={setUser}/>
                   </Route>
                   <Route path="/">
                   <HomePage />
@@ -35,9 +34,6 @@ export default function App() {
                   <Redirect to="/" />
                 </Switch>
               </>
-            :
-              <AuthPage setUser={setUser}/>
-          }
       </Container>
           <Footer />
     </Container>
