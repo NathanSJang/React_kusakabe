@@ -4,8 +4,7 @@ import { getUser } from '../../utilities/users-service';
 import { Container, AppBar, Typography, Grow, Grid } from '@material-ui/core';
 import './App.css';
 import AuthPage from '../AuthPage/AuthPage';
-import NewOrderPage from '../NewOrderPage/NewOrderPage';
-import OrderHistoryPage from '../OrderHistoryPage/OrderHistoryPage';
+import OrderPage from '../OrderPage/OrderPage';
 import NavBar from '../../components/NavBar/NavBar';
 import Footer from '../../components/Footer/Footer';
 import HomePage from '../HomePage/HomePage';
@@ -19,21 +18,22 @@ export default function App() {
 
   return (
     <Container className="App" maxWidth="100%">
-      <AppBar className={classes.appBar} color="inherit" position="static">
+      <AppBar className={classes.appBar} color="inherit" position="sticky">
         <NavBar user={user} setUser={setUser} />
       </AppBar>
-      <Container className={classes.mainContainer} container >
-              <>
-                <Switch>
-                  <Route path="/log-in">
-                    <AuthPage setUser={setUser}/>
-                  </Route>
-                  <Route path="/">
-                  <HomePage />
-                  </Route>
-                  <Redirect to="/" />
-                </Switch>
-              </>
+      <Container>
+        <Switch>
+          <Route path="/log-in">
+            <AuthPage setUser={setUser}/>
+          </Route>
+          <Route path="/order">
+            <OrderPage />
+          </Route>
+          <Route path="/">
+            <HomePage />
+          </Route>
+          <Redirect to="/" />
+        </Switch>
       </Container>
           <Footer />
     </Container>

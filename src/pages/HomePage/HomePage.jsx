@@ -1,10 +1,14 @@
 import { Paper, Typography, Button } from '@material-ui/core/';
 import CreaditCard from '@material-ui/icons/CreditCard'
+import useStyle from './styles.js'
+
 
 import Locations from '../../components/Location/Location';
 
 
 export default function HomePage() {
+    const classes = useStyle();
+
     return(
       <div>
         <h1>HomePage</h1>
@@ -34,9 +38,7 @@ export default function HomePage() {
             or 
             <Button variant="contained" color="default" startIcon={<CreaditCard />}>Delivery</Button>
           </div>
-          <div>
           <Locations />
-          </div>
       </div>
     );
 }
