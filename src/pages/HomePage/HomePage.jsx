@@ -1,4 +1,4 @@
-import { Paper, Typography, Button } from '@material-ui/core/';
+import { Paper, Typography, Button, Grid } from '@material-ui/core/';
 import CreaditCard from '@material-ui/icons/CreditCard'
 import useStyle from './styles.js'
 
@@ -38,7 +38,9 @@ export default function HomePage() {
             or 
             <Button variant="contained" color="default" startIcon={<CreaditCard />}>Delivery</Button>
           </div>
-          <Locations />
+          <Grid>
+            <Locations />
+          </Grid>
       </div>
     );
 }
