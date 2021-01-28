@@ -24,7 +24,7 @@ const orderSchema = new Schema({
 });
 
 orderSchema.static.getUserOrders = async function(userId) {
-  return this.find({ user: userId, isPaid: true }),
+  return this.find({ user: userId, isPaid: true });
 }
 
 orderSchema.static.getCart = async function(userId) {

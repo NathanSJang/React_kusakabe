@@ -4,6 +4,7 @@ import MenuNavBar from '../../components/MenuNavBar/MenuNavBar'
 import MenuCard from '../../components/MenuCard/MenuCard'
 import { useDispatch, useSelector } from "react-redux";
 import { getItems } from "../../utilities/redux/actions/items";
+import { getCart } from "../../utilities/redux/actions/orders"
 import { useState, useEffect, } from 'react';
 
 
@@ -11,6 +12,7 @@ import useStyle from './styles.js'
 
 export default function OrderPage() {
   const items = useSelector( (state) => state.items )
+  const cart = useSelector( (state) => state.orders )
   const [category, setCategory] = useState([]);
   const [open, setOpen] = useState(false);
 
@@ -27,6 +29,12 @@ export default function OrderPage() {
   useEffect(() => {
     dispatch(getItems());
   }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(getCart());
+  }, [dispatch]);
+
+
 
   useEffect(() => {
       const cats = items.reduce((cats, item) => {
