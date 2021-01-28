@@ -1,4 +1,4 @@
-import { Grid } from '@material-ui/core'
+import { Grid, Typography } from '@material-ui/core'
 import { useSelector } from "react-redux";
 import MenuCardItem from '../MenuCardItem/MenuCardItem'
 
@@ -13,15 +13,17 @@ export default function MenuCard({ categories }) {
     const cat = item.category.name;
     return cats.includes(cat) ? cats : [...cats, cat];}, [])
 
-  const test = items.filter(item => item.category.name === category[0])
-  console.log(test)
-  console.log(category)
+  // const test = items.filter(item => item.category.name === category[0])
   
   const test1 = category.map((cat, idx) => (
-    <Grid container spacing={3}>
-      <Grid item key={cat._id}>
-        {cat}
-        {<MenuCardItem item={items.filter(item => item.category.name === categories[idx])}/>}
+    <Grid className={classes.mainContainer} container justify="space-between" alignItems="stretch" spacing={3}>
+      <Grid item>
+        <Typography variant="h6">
+          {cat}
+        </Typography>
+      </Grid>
+        <Grid item>
+          <MenuCardItem item={items.filter(item => item.category.name === categories[idx])}/>
       </Grid>
     </Grid>)
   )
