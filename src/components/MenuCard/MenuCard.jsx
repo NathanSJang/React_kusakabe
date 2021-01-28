@@ -1,42 +1,34 @@
 import { Grid } from '@material-ui/core'
 import { useSelector } from "react-redux";
-import { useRef, useEffect } from 'react';
 import MenuCardItem from '../MenuCardItem/MenuCardItem'
 
 import useStyles from './styles';
 
-export default function MenuCard() {
+export default function MenuCard({ categories }) {
   const items = useSelector( (state) => state.items )
 
   const classes = useStyles();
-  const categoriesRef = useRef([])
+
+  const category = items.reduce((cats, item) => {
+    const cat = item.category.name;
+    return cats.includes(cat) ? cats : [...cats, cat];}, [])
+
+  const test = items.filter(item => item.category.name === category[0])
+  console.log(test)
+  console.log(category)
   
-  useEffect(() => {
-    categoriesRef.current = items.reduce((cats, item) => {
-      const cat = item.category.name;
-      return cats.includes(cat) ? cats : [...cats, cat];
-    }, [])
-    console.log(categoriesRef.current)
-  },[items]);
-
-
-
-  const itme = items.map((item) => (
-    <>
-      <Grid className={classes.mainContainer} container alignItems="stretch" spacing={3} key={item._id}>
-        <Grid  item xs={12} sm={6}>
-          <MenuCardItem item={item}  />
-        </Grid>
+  const test1 = category.map((cat, idx) => (
+    <Grid container spacing={3}>
+      <Grid item key={cat._id}>
+        {cat}
+        {<MenuCardItem item={items.filter(item => item.category.name === categories[idx])}/>}
       </Grid>
-    </>
-  ))
+    </Grid>)
+  )
 
   return (
       <>
-      <p>category.name: {categoriesRef.current.map(cat => <p>
-        {cat}
-      </p> )}</p>
-      {itme}
+      {test1}
       </>
   )
 }

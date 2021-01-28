@@ -1,7 +1,7 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles((theme) => ({
-  menuItemCard: {
+  menuItem: {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
