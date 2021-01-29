@@ -14,7 +14,7 @@ export default function HomePage() {
       <div>
         <h1>HomePage</h1>
         <iframe 
-          src="http://www.youtube.com/embed/Md8XUdsV7HU?&autoplay=1&mute=1&loop=1&controls=0&rel=0&showinfo=0&color=white&iv_load_policy=3&playlist=Md8XUdsV7HU" 
+          src="https://www.youtube.com/embed/Md8XUdsV7HU?&autoplay=1&mute=1&loop=1&controls=0&rel=0&showinfo=0&color=white&iv_load_policy=3&playlist=Md8XUdsV7HU" 
           allow="autoplay mute encrypted-media loop" 
           width="100%"
           height="500px"
