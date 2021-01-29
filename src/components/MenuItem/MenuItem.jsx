@@ -1,12 +1,8 @@
 import { Card, CardContent, Typography, Grid, CardActions, Button } from "@material-ui/core";
-
-import {useDispatch} from 'react-redux';
-import { addToCart } from '../../utilities/redux/actions/orders'
 import useStyles from './styles';
 
-export default function MenuItem({ item }) {
+export default function MenuItem({ item, handleAddToCart }) {
   const classes = useStyles();
-  const dispatch = useDispatch();
 
   return (
     <Grid item xs={6}>
@@ -18,7 +14,7 @@ export default function MenuItem({ item }) {
         <Typography variant="body2">${item.price}</Typography>
         </CardContent>
         <CardActions>
-          <Button variant="contained" color="primary" onClick={() => dispatch(addToCart(item.id))}>
+          <Button variant="contained" color="primary" onClick={() => handleAddToCart(item._id)}>
             Add
           </Button>
         </CardActions>

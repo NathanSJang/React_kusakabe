@@ -17,7 +17,7 @@ async function getOrders(req, res) {
 
 async function addToCart(req, res) {
   try {
-    const cart = await Order.getCart(req.user._id)
+    const cart = await Order.getCart(req.user._id);
     await cart.addItemToCart(req.params.id);
     res.status(200).json(cart);
   } catch (error) {
@@ -27,20 +27,6 @@ async function addToCart(req, res) {
 
 
 async function getCart(req, res) {
-  try {
-    console.log(req.user)
     const cart = await Order.getCart(req.user._id);
     res.status(200).json(cart);
-  } catch (error) {
-    res.status(404).json({ message: error.message });
   }
-}
-// async function getCart(req, res) {
-//   try {
-//     const cart = await Order.findByIdAndUpdate()
-//     console.log(cart)
-//     res.status(200).json(cart);
-//   } catch (error) {
-//     res.status(404).json({ message: error.message });
-//   }
-// }

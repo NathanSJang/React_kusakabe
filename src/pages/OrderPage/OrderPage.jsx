@@ -1,11 +1,12 @@
+import { useState, useEffect, useRef } from 'react';
 import { Button, Grid, Container, Grow, Drawer, Paper, Typography } from '@material-ui/core'
 import CreaditCard from '@material-ui/icons/CreditCard'
 import MenuNavBar from '../../components/MenuNavBar/MenuNavBar'
 import MenuCard from '../../components/MenuCard/MenuCard'
-import { useDispatch, useSelector } from "react-redux";
-import { getItems } from "../../utilities/redux/actions/items";
 
-import { useState, useEffect, } from 'react';
+import * as itemsAPI from '../../utilities/items-api';
+import * as ordersAPI from '../../utilities/orders-api';
+
 
 import OrderDetail from '../../components/OrderDetail/OrderDetail'
 
@@ -13,13 +14,13 @@ import OrderDetail from '../../components/OrderDetail/OrderDetail'
 import useStyle from './styles.js'
 
 export default function OrderPage({ user }) {
-  const items = useSelector( (state) => state.items )
-  const cart = useSelector( (state) => state.orders )
-  const [category, setCategory] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [menuItems, setMenuItems] = useState([]);
+  const [cart, setCart] = useState(null);
   const [open, setOpen] = useState(false);
 
   const classes = useStyle();
-  const dispatch = useDispatch();
+  const categoriesRef = useRef();
 
   const handleDrawerOpen = () => {
     setOpen(true)
@@ -28,39 +29,48 @@ export default function OrderPage({ user }) {
     setOpen(false)
   }
 
-  useEffect(() => {
-    dispatch(getItems());
-  }, [dispatch]);
-
-
-  console.log(cart);
-
-
 
   useEffect(() => {
-      const cats = items.reduce((cats, item) => {
-      const cat = item.category.name;
-      return cats.includes(cat) ? cats : [...cats, cat];
-    }, [])
-    setCategory(cats)
-  },[items]);
+    async function getItems() {
+      const items = await itemsAPI.getAll();
+      categoriesRef.current = items.reduce((cats, item) => {
+        const cat = item.category.name;
+        return cats.includes(cat) ? cats : [...cats, cat];
+      }, [])
+      setMenuItems(items);
+      setCategories(categoriesRef.current)
+    }
+    getItems();
 
+    // get Cart
+    async function getCart() {
+      const cart = await ordersAPI.getCart();
+      setCart(cart);
+    }
+    getCart();
+  }, [])
 
+  /* Event handler */ 
+  async function handleAddToCart(itemId) {
+    const cart = await ordersAPI.addItemToCart(itemId);
+    setCart(cart);
+  }
 
 
   return (
     <Container>
-      {cart}
       <h1>orderPage</h1>
       <Button variant="contained" color="default" startIcon={<CreaditCard />}>Pick up</Button> 
       <Button variant="contained" color="default" startIcon={<CreaditCard />}>delivery</Button> 
-      <MenuNavBar  categories={category} />
+      <MenuNavBar  categories={categories} />
       <Grow in>
       <Container>
         <Grid container justify="space-between" alignItems="stretch"  spacing={3}>
           <Grid item >
             <MenuCard 
-              categories={category} 
+              menuItems={menuItems}
+              categories={categories}
+              handleAddToCart={handleAddToCart}
             />
           </Grid>
         </Grid>
@@ -74,11 +84,9 @@ export default function OrderPage({ user }) {
           <Typography>
             Bottom drawer
           </Typography>
-          <OrderDetail />
+          <OrderDetail cart={cart} handleDrawerClose={handleDrawerClose}/>
         </Paper>
-        <Grid className={classes.viewOrderBtn}>
-          <Button variant="contained" color="secondary" onClick={handleDrawerClose}>Back to order</Button>
-        </Grid>
+
       </Drawer>
     </Container>
   );

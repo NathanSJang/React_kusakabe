@@ -23,11 +23,29 @@ const orderSchema = new Schema({
   toJSON: { virtuals: true },
 });
 
+orderSchema.virtual('orderTotal').get(function () {
+  return this.lineItems.reduce((total, item) => total + item.extPrice, 0);
+});
+
+orderSchema.virtual('totalQty').get(function () {
+  return this.lineItems.reduce((total, item) => total + item.qty, 0);
+});
+
+orderSchema.virtual('orderId').get(function () {
+  return this.id.slice(-6).toUpperCase();
+});
+
+orderSchema.virtual('orderDate').get(function() {
+  console.log(this.createdAt)
+  return this.createdAt.toLocaleDateString()
+})
+
 orderSchema.statics.getUserOrders = async function(userId) {
   return this.find({ user: userId, isPaid: true });
 }
 
 orderSchema.statics.getCart = async function(userId) {
+  console.log(userId)
   return this.findOneAndUpdate(
     { user: userId, isPaid: false },
     { user: userId },

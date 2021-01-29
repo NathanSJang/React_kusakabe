@@ -1,5 +1,7 @@
-import axios from 'axios';
+import sendRequest from './send-request';
 
 const BASE_URL = '/api/items'
 
-export const fetchItems = () => axios.get(BASE_URL);
+export function getAll() {
+  return sendRequest(BASE_URL);
+}

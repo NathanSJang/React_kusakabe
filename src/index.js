@@ -10,13 +10,10 @@ import reducers from './utilities/redux/reducers';
 import './index.css';
 import App from './pages/App/App';
 
-const store = createStore(reducers, compose(applyMiddleware(thunk)));
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
       <Router><App /></Router>
-    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

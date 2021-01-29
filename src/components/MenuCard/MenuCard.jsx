@@ -1,36 +1,33 @@
 import { Grid, Typography } from '@material-ui/core'
-import { useSelector } from "react-redux";
 import MenuCardItem from '../MenuCardItem/MenuCardItem'
 
 import useStyles from './styles';
 
-export default function MenuCard({ categories }) {
-  const items = useSelector( (state) => state.items )
+export default function MenuCard({ categories, menuItems, handleAddToCart }) {
 
   const classes = useStyles();
 
-  const category = items.reduce((cats, item) => {
-    const cat = item.category.name;
-    return cats.includes(cat) ? cats : [...cats, cat];}, [])
-
-  // const test = items.filter(item => item.category.name === category[0])
-  
-  const test1 = category.map((cat, idx) => (
+  const filterByCat = categories.map((cat, idx) =>
     <Grid className={classes.mainContainer} container justify="space-between" alignItems="stretch" spacing={3}>
-      <Grid item>
+        <Grid item>
         <Typography variant="h6">
           {cat}
         </Typography>
-      </Grid>
+        </Grid>
         <Grid item>
-          <MenuCardItem item={items.filter(item => item.category.name === categories[idx])}/>
+          <MenuCardItem 
+            items={menuItems.filter(item => item.category.name === categories[idx])}
+            handleAddToCart={handleAddToCart}
+            />
       </Grid>
-    </Grid>)
+      </Grid>
   )
+
+
 
   return (
       <>
-      {test1}
+        {filterByCat}
       </>
   )
 }

@@ -1,7 +1,11 @@
-import axios from 'axios';
+import sendRequest from './send-request';
 
-const BASE_URL = '/api/orders'
+const BASE_URL = '/api/orders';
 
-export const getCart = () => axios.get(`${BASE_URL}/cart`);
-export const getOrders = () => axios.get(BASE_URL);
-export const addItemToCart = (itemId) => axios.post(`${BASE_URL}/cart/items/${itemId}`,)
+export function getCart() {
+  return sendRequest(`${BASE_URL}/cart`);
+}
+
+export function addItemToCart(itemId) {
+  return sendRequest(`${BASE_URL}/cart/items/${itemId}`, 'POST');
+}
