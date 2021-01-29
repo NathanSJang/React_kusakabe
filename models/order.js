@@ -15,7 +15,7 @@ lineItemSchema.virtual('extPrice').get(function() {
 })
 
 const orderSchema = new Schema({
-  user: { type: Schema.Types.ObjectId, ref: 'User'},
+  user: { type: Schema.Types.ObjectId, ref: 'User' },
   lineItems: [lineItemSchema],
   isPaid: {type: Boolean, default: false },
 }, {
@@ -23,11 +23,11 @@ const orderSchema = new Schema({
   toJSON: { virtuals: true },
 });
 
-orderSchema.static.getUserOrders = async function(userId) {
+orderSchema.statics.getUserOrders = async function(userId) {
   return this.find({ user: userId, isPaid: true });
 }
 
-orderSchema.static.getCart = async function(userId) {
+orderSchema.statics.getCart = async function(userId) {
   return this.findOneAndUpdate(
     { user: userId, isPaid: false },
     { user: userId },
@@ -35,7 +35,7 @@ orderSchema.static.getCart = async function(userId) {
   )
 }
 
-orderSchema.method.addItemToCart = async function(itemId) {
+orderSchema.methods.addItemToCart = async function(itemId) {
   const cart = this;
   const lineItem = cart.lineItems.find(lineItem => lineItem.item._id.equals(itemId));
   if(lineItem) {

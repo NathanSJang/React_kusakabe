@@ -4,13 +4,15 @@ import MenuNavBar from '../../components/MenuNavBar/MenuNavBar'
 import MenuCard from '../../components/MenuCard/MenuCard'
 import { useDispatch, useSelector } from "react-redux";
 import { getItems } from "../../utilities/redux/actions/items";
-import { getCart } from "../../utilities/redux/actions/orders"
+
 import { useState, useEffect, } from 'react';
+
+import OrderDetail from '../../components/OrderDetail/OrderDetail'
 
 
 import useStyle from './styles.js'
 
-export default function OrderPage() {
+export default function OrderPage({ user }) {
   const items = useSelector( (state) => state.items )
   const cart = useSelector( (state) => state.orders )
   const [category, setCategory] = useState([]);
@@ -30,9 +32,8 @@ export default function OrderPage() {
     dispatch(getItems());
   }, [dispatch]);
 
-  useEffect(() => {
-    dispatch(getCart());
-  }, [dispatch]);
+
+  console.log(cart);
 
 
 
@@ -49,6 +50,7 @@ export default function OrderPage() {
 
   return (
     <Container>
+      {cart}
       <h1>orderPage</h1>
       <Button variant="contained" color="default" startIcon={<CreaditCard />}>Pick up</Button> 
       <Button variant="contained" color="default" startIcon={<CreaditCard />}>delivery</Button> 
@@ -72,6 +74,7 @@ export default function OrderPage() {
           <Typography>
             Bottom drawer
           </Typography>
+          <OrderDetail />
         </Paper>
         <Grid className={classes.viewOrderBtn}>
           <Button variant="contained" color="secondary" onClick={handleDrawerClose}>Back to order</Button>

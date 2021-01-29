@@ -1,4 +1,4 @@
-import { FETCH_ALL } from '../constants/itemActionTypes'
+import { FETCH_ALL } from '../constants/actionTypes'
 import * as itemsAPI from '../../items-api'
 
 // Action creator

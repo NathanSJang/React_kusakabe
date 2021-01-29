@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useHistory } from "react-router-dom";
 import * as usersService from '../../utilities/users-service';
+import { logIn } from '../../utilities/redux/actions/users'
+import { useDispatch } from "react-redux";
 
 export default function LogIn({ setUser }) {
   const [credentials, setCredentials] = useState({
@@ -9,6 +11,7 @@ export default function LogIn({ setUser }) {
   });
   const [error, setError] = useState('');
   const history = useHistory();
+  const dispatch = useDispatch();
 
   function handleChange(evt) {
     setCredentials({ ...credentials, [evt.target.name]: evt.target.value });

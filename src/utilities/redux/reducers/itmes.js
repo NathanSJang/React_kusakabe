@@ -1,4 +1,4 @@
-import { FETCH_ALL } from '../constants/itemActionTypes'
+import { FETCH_ALL } from '../constants/actionTypes'
 
 export default (items = [], action) => {
   switch (action.type) {
