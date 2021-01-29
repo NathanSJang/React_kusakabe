@@ -1,4 +1,4 @@
-import { Paper, Typography, Card, Grid, Button } from "@material-ui/core";
+import { Typography, Card, Grid, Button, } from "@material-ui/core";
 
 import LineItem from '../LineItem/LineItem'
 import useStyle from './styles.js'
@@ -17,14 +17,18 @@ export default function OrderDetail({ cart, handleDrawerClose }) {
   return (
     <>
       <h1>order detail</h1>
-      <Paper>
         <Card>
           <Typography>{cart.orderId}</Typography>
           <Typography>{new Date(cart.updatedAt).toLocaleDateString()}</Typography>
-          <Typography>aaaa</Typography>
         </Card>
-        {lineItems}
-      </Paper>
+        <div className={classes.lineItems}>
+          {lineItems}
+        </div>
+        <div className={classes.viewOrderBtn}>
+          Qty: {cart.totalQty}
+          Total: ${cart.orderTotal.toFixed(2)}
+          <Button variant="contained" color="primary">CheckOut</Button>
+        </div>
       <Grid className={classes.viewOrderBtn}>
         <Button variant="contained" color="secondary" onClick={handleDrawerClose}>Back to order</Button>
       </Grid>

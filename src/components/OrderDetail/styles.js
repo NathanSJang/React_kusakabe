@@ -5,5 +5,11 @@ export default makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     marginBottom: '10vmin'
+  },
+  lineItems: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center'
+    
   }
 }));
