@@ -1,20 +1,20 @@
-import { useEffect, useState, useSelector } from 'react';
-import { Route, Switch, Redirect, useHistory } from 'react-router-dom';
+import { useState } from 'react';
+import { Route, Switch, Redirect} from 'react-router-dom';
 import { getUser } from '../../utilities/users-service';
-import { Container, AppBar, Typography, Grow, Grid } from '@material-ui/core';
+import { Container, AppBar} from '@material-ui/core';
 import './App.css';
 import AuthPage from '../AuthPage/AuthPage';
 import OrderPage from '../OrderPage/OrderPage';
 import NavBar from '../../components/NavBar/NavBar';
 import Footer from '../../components/Footer/Footer';
 import HomePage from '../HomePage/HomePage';
+import ConfirmationPage from '../ConfirmationPage/ConfirmationPage'
 
 import useStyles from "./styles";
 
 export default function App() {
 
   const [user, setUser] = useState(getUser());
-
 
   const classes = useStyles();
 
@@ -30,6 +30,9 @@ export default function App() {
           </Route>
           <Route path="/order">
             <OrderPage user={user} />
+          </Route>
+          <Route path="/confirmation">
+            <ConfirmationPage user={user} />
           </Route>
           <Route path="/">
             <HomePage />

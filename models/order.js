@@ -41,7 +41,7 @@ orderSchema.virtual('orderDate').get(function() {
 })
 
 orderSchema.statics.getUserOrders = async function(userId) {
-  return this.find({ user: userId, isPaid: true });
+  return this.find({ user: userId, isPaid: true }).sort('-updatedAt')
 }
 
 orderSchema.statics.getCart = async function(userId) {
@@ -63,6 +63,17 @@ orderSchema.methods.addItemToCart = async function(itemId) {
     cart.lineItems.push({ item })
   }
   return cart.save()
+}
+
+orderSchema.methods.setItemQty = async function(itemId, newQty) {
+  const cart = this;
+  const lineItem = cart.lineItems.find(lineItem => lineItem.item._id.equals(itemId));
+  if(lineItem && newQty <= 0) {
+    lineItem.remove();
+  } else if (lineItem) {
+    lineItem.qty = newQty;
+  }
+  return cart.save();
 }
 
 module.exports = mongoose.model('Order', orderSchema)

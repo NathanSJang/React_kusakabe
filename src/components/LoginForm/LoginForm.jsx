@@ -11,7 +11,6 @@ export default function LogIn({ setUser }) {
   });
   const [error, setError] = useState('');
   const history = useHistory();
-  const dispatch = useDispatch();
 
   function handleChange(evt) {
     setCredentials({ ...credentials, [evt.target.name]: evt.target.value });
