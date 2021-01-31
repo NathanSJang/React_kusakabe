@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { Route, Switch, Redirect} from 'react-router-dom';
 import { getUser } from '../../utilities/users-service';
 import { Container, AppBar} from '@material-ui/core';
-import './App.css';
 import AuthPage from '../AuthPage/AuthPage';
 import OrderPage from '../OrderPage/OrderPage';
 import NavBar from '../../components/NavBar/NavBar';
@@ -19,11 +18,11 @@ export default function App() {
   const classes = useStyles();
 
   return (
-    <Container className="App" maxWidth="100%">
-      <AppBar className={classes.appBar} color="inherit" position="sticky">
+    <Container className="App" className={classes.app} >
+      <AppBar item className={classes.appBar} color="inherit" position="sticky">
         <NavBar user={user} setUser={setUser} />
       </AppBar>
-      <Container>
+      <Container className={classes.mainContainer}>
         <Switch>
           <Route path="/log-in">
             <AuthPage setUser={setUser}/>

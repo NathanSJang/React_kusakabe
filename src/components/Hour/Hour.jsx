@@ -1,10 +1,11 @@
-import { Paper, Typography } from '@material-ui/core' 
+import { Paper, Typography} from '@material-ui/core'
+import useStyles from "./styles";
 
 export default function Hour() {
+  const classes = useStyles();
+  
   return (
-    <>
-      <Paper>
-        
+      <Paper className={classes.hour}>
         <Typography variant="h5">
           KUSAKABE
         </Typography>
@@ -15,21 +16,20 @@ export default function Hour() {
           Hour
         </Typography>
         <Typography>
-          Wednesday, January 27 (4:30 PM - 6:30PM)
+          Wednesday, 4:30 PM - 6:30PM
         </Typography>
         <Typography>
-          Thursday, January 28 (4:30 PM - 6:30PM)
+          Thursday, 4:30 PM - 6:30PM
         </Typography>
         <Typography>
-          Friday, January 29 (4:30 PM - 6:30PM)
+          Friday, 4:30 PM - 6:30PM
         </Typography>
         <Typography>
-          Saturday, January 30 (4:30 PM - 6:30PM)
+          Saturday, 4:30 PM - 6:30PM
         </Typography>
         <Typography>
-          Sunday, January 31 (4:30PM - 6:30PM)
+          Sunday, 4:30PM - 6:30PM
         </Typography>
       </Paper>
-    </>
   );
 }

@@ -5,5 +5,6 @@ export default makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'space-evenly',
     marginBottom: '13vmin',
+    marginTop: '5vmin',
   }
 }));

@@ -1,6 +1,12 @@
 import { makeStyles } from '@material-ui/core';
 
 export default makeStyles((theme) => ({
+  app: {
+    maxWidth: '100%',
+    paddingLeft: 0,
+    paddingRight: 0,
+
+  },
   appBar: {
     margin: '0',
     display: 'flex',
@@ -17,6 +23,7 @@ export default makeStyles((theme) => ({
     }
   },
   mainContainer: {
-    height: '100%'
+    height: '100%',
+    marginTop: '5vmin',
   }
 }));

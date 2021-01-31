@@ -97,19 +97,14 @@ export default function OrderPage({ user }) {
         <Button variant="contained" color="secondary" onClick={handleDrawerOpen}>View your order</Button>
       </Grid>
       <Drawer variant="persistent" anchor="bottom" open={open}>
-        <Paper>
-          <Typography>
-            Bottom drawer
-          </Typography>
           <OrderDetail
+            user={user}
             cart={cart} 
             handleDrawerClose={handleDrawerClose}
             handleChangeQty={handleChangeQty}
             handleCheckOut={handleCheckOut}
             handleBackToHome={handleBackToHome}
             />
-        </Paper>
-
       </Drawer>
     </Container>
   );
