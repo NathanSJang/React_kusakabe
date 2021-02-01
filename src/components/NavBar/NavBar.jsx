@@ -23,6 +23,7 @@ export default function NavBar({ user, setUser }) {
           <Typography variant="h6" className={classes.title}>
             <Link className={classes.navLinks} color="inherit" variant="body2" href="/order">Order</Link>
             <Link className={classes.navLinks} color="inherit" variant="body2" href="/confirmation">confirmation</Link>
+            <Link className={classes.navLinks} color="inherit" variant="body2" href="/aboutUs">aboutUs</Link>
             {user ? 
             <>
             <span className={classes.navLinks}>Welcome, {user.name}</span>

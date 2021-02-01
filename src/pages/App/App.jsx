@@ -9,6 +9,7 @@ import Footer from '../../components/Footer/Footer';
 import HomePage from '../HomePage/HomePage';
 import ConfirmationPage from '../ConfirmationPage/ConfirmationPage';
 import CheckOutPage from '../CheckOutPage/CheckOutPage';
+import AboutUsPage from '../AboutUsPage/AboutUsPage';
 
 import useStyles from "./styles";
 
@@ -55,6 +56,9 @@ export default function App() {
           </Route>
           <Route path="/stripe">
             <CheckOutPage user={user} />
+          </Route>
+          <Route path="/aboutUs">
+            <AboutUsPage user={user} />
           </Route>
           <Route path="/">
             <HomePage
