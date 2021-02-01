@@ -45,7 +45,6 @@ orderSchema.statics.getUserOrders = async function(userId) {
 }
 
 orderSchema.statics.getCart = async function(userId) {
-  console.log(userId)
   return this.findOneAndUpdate(
     { user: userId, isPaid: false },
     { user: userId },

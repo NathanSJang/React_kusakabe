@@ -4,4 +4,9 @@ export default makeStyles((theme) => ({
   mainContainer: {
     height: '100vmin',
   },
+  checkOutPaper: {
+    display: 'flex',
+    justifyContent: 'center',
+    flexDirection: 'column',
+  }
 }));

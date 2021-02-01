@@ -1,29 +1,23 @@
-import { useState, useEffect } from 'react';
+import { useState} from 'react';
 import { useHistory } from "react-router-dom";
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
+import { Grid } from '@material-ui/core'
 
-export default function CheckOutForm({ cart }) {
+import useStyle from './styles.js'
+
+export default function CheckOutForm({ clientSecret, cart }) {
   const [succeeded, setSucceeded] = useState(false);
   const [error, setError] = useState(null);
   const [processing, setProcessing] = useState('');
   const [disabled, setDisabled] = useState(true);
-  const [clientSecret, setClientSecret] = useState('');
 
+  console.log(clientSecret)
+  console.log(cart)
+  
+  const classes = useStyle();
   const stripe = useStripe();
   const elements = useElements();
   const histroy = useHistory();
-
-  useEffect(() => {
-    window.fetch("/stripe", {
-      method: "POST",
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify({ cart })
-    })
-    .then(res => res.json())
-    .then(data => {
-      setClientSecret(data.clientSecret);
-    });
-  }, []);
 
   const cardStyle = {
     style: {
@@ -69,21 +63,28 @@ export default function CheckOutForm({ cart }) {
   };
 
   return(
-    <form id="payment-form" onSubmit={handleSubmit}>
-      <CardElement id="card-element" options={cardStyle} onChange={handleChange} />
-      <button
-        disabled={processing || disabled || succeeded}
-        id="submit"
-      >
-        <span id="button-text">
-          {processing ? (
-            <div className="spinner" id="spinner"></div>
-          ) : (
-            "Pay"
-          )}
-        </span>
-      </button>
-      {/* Show any error that happens when processing the payment */}
+    <form className={classes.form} id="payment-form" onSubmit={handleSubmit}>
+      <Grid container>
+        <Grid item sm={12} lg={12}>
+          <CardElement className={classes.cardStyle} id="card-element"  onChange={handleChange} />
+        </Grid>
+      </Grid>
+      <Grid sm={12}>
+        <button
+          className={classes.btn}
+          disabled={processing || disabled || succeeded}
+          id="submit"
+        >
+          <span id="button-text">
+            {processing ? (
+              <div className="spinner" id="spinner"></div>
+            ) : (
+              "Pay"
+            )}
+          </span>
+        </button>
+        {/* Show any error that happens when processing the payment */}
+      </Grid>
       {error && (
         <div className="card-error" role="alert">
           {error}

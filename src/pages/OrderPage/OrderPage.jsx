@@ -5,7 +5,6 @@ import CreaditCard from '@material-ui/icons/CreditCard'
 import MenuNavBar from '../../components/MenuNavBar/MenuNavBar'
 import MenuCard from '../../components/MenuCard/MenuCard'
 import OrderDetail from '../../components/OrderDetail/OrderDetail'
-import CheckOutPage from '../CheckOutPage/CheckOutPage'
 
 import * as itemsAPI from '../../utilities/items-api';
 import * as ordersAPI from '../../utilities/orders-api';
@@ -26,7 +25,6 @@ export default function OrderPage({ user, pickUp, handlePickUp, handleDelivery }
   const categoriesRef = useRef();
   const cartRef = useRef()
   const histroy = useHistory();
-  const pick_UP = pickUp
 
   useEffect(() => {
     async function getItems() {
@@ -69,7 +67,7 @@ export default function OrderPage({ user, pickUp, handlePickUp, handleDelivery }
     };
 
   async function handleCheckOut() {
-    await ordersAPI.checkOut();
+    // await ordersAPI.checkOut();
     histroy.push('/stripe')
   }
 
