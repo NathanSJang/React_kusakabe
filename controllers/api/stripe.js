@@ -5,32 +5,26 @@ module.exports = {
   checkOut,
 }
 
-const calculateOrderAmount = cart => {
+const calculateOrderAmount = total => {
   // Replace this constant with a calculation of the order's amount
   // Calculate the order total on the server to prevent
   // people from directly manipulating the amount on the client
-  return getTotal(cart)
+  
+  return total * 100
 };
 
-function getTotal(cart) {
-  for(let i = 0; i < cart.lineItems.length; i++) {
-    return (cart.lineItems[i].qty * cart.lineItems[i].item.price) * 100
-  }
-}
+
 
 async function checkOut(req, res) {
   try {
     const cart = await Order.getCart(req.user._id);
-    console.log(cart.lineItems[0].item.price)
-    console.log(cart.lineItems[0].qty)
+    console.log(cart.orderTotal)
     // Create a PaymentIntent with the order amount and currency
     const paymentIntent = await stripe.paymentIntents.create({
       payment_method_types: ['card'],
-      amount: calculateOrderAmount(cart),
+      amount: calculateOrderAmount(cart.orderTotal),
       currency: "usd"
     });
-    cart.isPaid = true;
-    await cart.save()
     res.send({
       clientSecret: paymentIntent.client_secret
     })

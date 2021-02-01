@@ -9,9 +9,6 @@ import OrderDetail from '../../components/OrderDetail/OrderDetail'
 import * as itemsAPI from '../../utilities/items-api';
 import * as ordersAPI from '../../utilities/orders-api';
 
-
-
-
 import useStyle from './styles.js'
 
 export default function OrderPage({ user, pickUp, handlePickUp, handleDelivery }) {

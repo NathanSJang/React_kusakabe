@@ -15,7 +15,7 @@ export default function CheckOutPage({ user }) {
   const [clientSecret, setClientSecret] = useState('');
   const [cart, setCart] = useState(null);
 
-  useEffect((user) => {
+  useEffect(() => {
     async function stripeCheckOut(user) {
       await stripeAPI.checkOut(user)
         .then(data => {setClientSecret(data.clientSecret)});
