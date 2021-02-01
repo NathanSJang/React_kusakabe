@@ -1,13 +1,12 @@
 import { Container, Typography, Button, Grid } from '@material-ui/core/';
-import CreaditCard from '@material-ui/icons/CreditCard'
-import { useState } from 'react';
-import useStyle from './styles.js'
+import CreaditCard from '@material-ui/icons/CreditCard';
+import useStyle from './styles.js';
 
 
 import Locations from '../../components/Location/Location';
 
 
-export default function HomePage() {
+export default function HomePage({ pickUp, handlePickUp, handleDelivery }) {
     const classes = useStyle();
 
     return(
@@ -23,27 +22,49 @@ export default function HomePage() {
           frameborder="0"
           allowfullscreen
           />
+          <Container className={classes.topMargin} container>
             <Typography variant="h6">
               KUSAKABE is
             </Typography>
-            <Typography variant="subtitle1">
+            <Typography className={classes.bottomMargin} variant="subtitle1">
               We are the only restaurant in San Francisco that offers Kyoto style sushi takeout.
             </Typography>
             <Typography variant="h6">
               What is OMIYAGE?
             </Typography>
-            <Typography variant="hsubtitle1">
+            <Typography className={classes.bottomMargin} variant="subtitle1">
               Omiyage not only means “take-out”, but also implies as a gift to thank your beloved family members, dear friends, and those who support you, or to give them happiness.
             </Typography>
-          <div>
-            Order Omiyage for 
-            <Button variant="contained" color="default" startIcon={<CreaditCard />}>Pick up</Button> 
-            or 
-            <Button variant="contained" color="default" startIcon={<CreaditCard />}>Delivery</Button>
-          </div>
-          <Grid sm={12}>
-            <Locations />
-          </Grid>
+          </Container>
+          <Container className={classes.bottomMargin} container>
+            <Typography variant="h6">
+              Order Omiyage
+            </Typography>
+            <div className={classes.topMargin}>
+              <Button
+                onClick={handlePickUp}
+                className={classes.rightMargin} 
+                variant="contained" 
+                color="default" 
+                startIcon={<CreaditCard />}
+              >
+                Pick up
+              </Button> 
+              <Button 
+                onClick={handleDelivery}
+                variant="contained" 
+                color="default" 
+                startIcon={<CreaditCard />}
+              >
+                Delivery
+              </Button>
+            </div>
+          </Container>
+          <Container container>
+            <Grid item sm={12}>
+              <Locations />
+            </Grid>
+          </Container>
       </>
     );
 }

@@ -7,7 +7,6 @@ export default function OrderDetail({ user, cart, handleDrawerClose, handleChang
   const classes = useStyle();
   if(!cart) return null;
 
-  console.log(user)
 
   const lineItems = cart.lineItems.map(item => 
     <LineItem 

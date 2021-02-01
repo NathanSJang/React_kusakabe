@@ -8,5 +8,8 @@ export default makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     marginBottom: '10vmin'
-  }
+  },
+  rightMargin: {
+    marginRight: '2vmin',
+  },
 }));

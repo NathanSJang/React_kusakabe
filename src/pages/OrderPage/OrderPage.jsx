@@ -14,17 +14,20 @@ import * as ordersAPI from '../../utilities/orders-api';
 
 import useStyle from './styles.js'
 
-export default function OrderPage({ user }) {
+export default function OrderPage({ user, pickUp, handlePickUp, handleDelivery }) {
   const [categories, setCategories] = useState([]);
   const [menuItems, setMenuItems] = useState([]);
   const [cart, setCart] = useState(null);
   const [open, setOpen] = useState(false);
+
+  // console.log(menuItems.filter(item => item.category.name !== 'Sake'))
 
 
   const classes = useStyle();
   const categoriesRef = useRef();
   const cartRef = useRef()
   const histroy = useHistory();
+  const pick_UP = pickUp
 
   useEffect(() => {
     async function getItems() {
@@ -33,8 +36,13 @@ export default function OrderPage({ user }) {
         const cat = item.category.name;
         return cats.includes(cat) ? cats : [...cats, cat];
       }, [])
+      if(!pickUp) {
+        const filtercate = categoriesRef.current.filter(cate => cate !== 'Sake')
+        setCategories(filtercate)
+      } else {
+        setCategories(categoriesRef.current)
+      }
       setMenuItems(items);
-      setCategories(categoriesRef.current)
     }
     getItems();
 
@@ -44,7 +52,7 @@ export default function OrderPage({ user }) {
       setCart(cartRef.current);
     }
     getCart();
-  }, [])
+  }, [pickUp])
 
   /* Event handler */ 
   async function handleAddToCart(itemId) {
@@ -76,9 +84,23 @@ export default function OrderPage({ user }) {
 
   return (
     <Container>
-      <h1>orderPage</h1>
-      <Button variant="contained" color="default" startIcon={<CreaditCard />}>Pick up</Button> 
-      <Button variant="contained" color="default" startIcon={<CreaditCard />}>delivery</Button> 
+      <Button
+        className={classes.rightMargin}
+        onClick={handlePickUp}
+        variant="contained" 
+        color="default" 
+        startIcon={<CreaditCard />}
+      >
+        Pick up
+      </Button> 
+      <Button
+        onClick={handleDelivery}
+        variant="contained" 
+        color="default" 
+        startIcon={<CreaditCard />}
+      >
+        delivery
+      </Button> 
       <MenuNavBar  categories={categories} />
       <Grow in>
       <Container>
