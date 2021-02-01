@@ -6,7 +6,6 @@ import useStyle from './styles.js'
 export default function OrderDetail({ user, cart, handleDrawerClose, handleChangeQty, handleCheckOut }) {
   const classes = useStyle();
   if(!cart) return null;
-  console.log(cart)
 
   const lineItems = cart.lineItems.map(item => 
     <LineItem 

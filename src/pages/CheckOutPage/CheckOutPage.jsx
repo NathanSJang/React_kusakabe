@@ -1,10 +1,9 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
 import CheckOutForm from '../../components/CheckOutForm/CheckOutForm'
 import { Typography, Paper, Container } from '@material-ui/core'
 import mockCard from '../../images/mockcard.png'
-import * as ordersAPI from '../../utilities/orders-api';
 import * as stripeAPI from '../../utilities/stripe-api';
 
 import useStyle from './styles.js'
@@ -12,9 +11,14 @@ import useStyle from './styles.js'
 
 const promise = loadStripe('pk_test_51IFth3LxbmCbUYW1tdniXN0CcKQA170ZQ41QAYkXAjKQbMWbEW7MmiLsoQwcLLM49f6rGwbKrdLBsgQcp8Y5jG3G00PibXWO3s');
 
-export default function CheckOutPage({ user }) {
+export default function CheckOutPage({ getCart, user }) {
   const [clientSecret, setClientSecret] = useState('');
-  const [cart, setCart] = useState(null);
+  const [cart, setCart] = useState(getCart);
+  // console.log(getCart);
+  // console.log(cart)
+
+
+
 
   useEffect(() => {
     async function stripeCheckOut(user) {
@@ -22,14 +26,8 @@ export default function CheckOutPage({ user }) {
         .then(data => {setClientSecret(data.clientSecret)});
     }
     stripeCheckOut();
+  }, []);
 
-    async function getCart() {
-      const cart = await ordersAPI.getCart();
-      setCart(cart);
-    }
-    getCart();
-  }, [user]);
-  console.log(cart);
 
   const classes = useStyle();
 

@@ -19,7 +19,6 @@ const calculateOrderAmount = total => {
 async function checkOut(req, res) {
   try {
     const cart = await Order.getCart(req.user._id);
-    console.log(cart.orderTotal)
     // Create a PaymentIntent with the order amount and currency
     const paymentIntent = await stripe.paymentIntents.create({
       payment_method_types: ['card'],

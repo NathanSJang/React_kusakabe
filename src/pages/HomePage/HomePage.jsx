@@ -1,4 +1,4 @@
-import { Container, Typography, Button, Grid } from '@material-ui/core/';
+import { Container, Typography, Button,} from '@material-ui/core/';
 import CreaditCard from '@material-ui/icons/CreditCard';
 import useStyle from './styles.js';
 
@@ -20,6 +20,7 @@ export default function HomePage({ pickUp, handlePickUp, handleDelivery }) {
           width="100%"
           height="500px"
           frameborder="0"
+          title="kusakabe"
           allowfullscreen
           />
           <Container className={classes.topMargin} container>

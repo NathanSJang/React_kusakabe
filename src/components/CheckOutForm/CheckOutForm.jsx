@@ -11,9 +11,6 @@ export default function CheckOutForm({ clientSecret, cart }) {
   const [error, setError] = useState(null);
   const [processing, setProcessing] = useState('');
   const [disabled, setDisabled] = useState(true);
-
-  console.log(clientSecret)
-  console.log(cart)
   
   const classes = useStyle();
   const stripe = useStripe();

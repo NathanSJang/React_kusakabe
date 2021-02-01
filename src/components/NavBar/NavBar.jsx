@@ -1,4 +1,3 @@
-import { NavLink } from 'react-router-dom';
 import { Toolbar, Typography, Link } from '@material-ui/core'
 import Logo from '../Logo/Logo'
 import * as userService from '../../utilities/users-service';

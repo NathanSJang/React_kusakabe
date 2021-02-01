@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { useHistory, Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { Button, Grid, Container, Grow, Drawer,} from '@material-ui/core'
 import CreaditCard from '@material-ui/icons/CreditCard'
 import MenuNavBar from '../../components/MenuNavBar/MenuNavBar'

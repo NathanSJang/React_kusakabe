@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Route, Switch, Redirect, useHistory } from 'react-router-dom';
 import { getUser } from '../../utilities/users-service';
 import { Container, AppBar} from '@material-ui/core';
@@ -11,16 +11,29 @@ import ConfirmationPage from '../ConfirmationPage/ConfirmationPage';
 import CheckOutPage from '../CheckOutPage/CheckOutPage';
 import AboutUsPage from '../AboutUsPage/AboutUsPage';
 import PolicyPage from '../PolicyPage/PolicyPage';
+import * as ordersAPI from '../../utilities/orders-api';
 
 import useStyles from "./styles";
+
 
 export default function App() {
 
   const [user, setUser] = useState(getUser());
   const [pickUp, setPickUp] = useState(true);
+  const [getCart, setgetCart] = useState(null);
+
 
   const classes = useStyles();
   const histroy = useHistory();
+  const cartRef = useRef();
+
+  useEffect(() => {
+    async function getCart() {
+      cartRef.current = await ordersAPI.getCart();
+      setgetCart(cartRef.current)
+    }
+    getCart();
+  }, []);
 
   async function handlePickUp() {
     setPickUp(true);
@@ -56,7 +69,7 @@ export default function App() {
             <ConfirmationPage user={user} />
           </Route>
           <Route path="/stripe">
-            <CheckOutPage user={user} />
+            <CheckOutPage getCart={getCart} user={user} />
           </Route>
           <Route path="/aboutUs">
             <AboutUsPage user={user} />

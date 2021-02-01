@@ -18,7 +18,8 @@ export default function Location() {
               frameborder="0"  
               allowfullscreen="" 
               aria-hidden="false" 
-              tabindex="0" 
+              tabindex="0"
+              title="location" 
             />
           </Grid>
           <Grid item xs={12} md={6} lg={6}>
