@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, } from 'react'
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
 import CheckOutForm from '../../components/CheckOutForm/CheckOutForm'
@@ -14,8 +14,8 @@ const promise = loadStripe('pk_test_51IFth3LxbmCbUYW1tdniXN0CcKQA170ZQ41QAYkXAjK
 export default function CheckOutPage({ getCart, user }) {
   const [clientSecret, setClientSecret] = useState('');
   const [cart, setCart] = useState(getCart);
-  // console.log(getCart);
-  // console.log(cart)
+  console.log(getCart);
+  console.log(cart)
 
 
 
