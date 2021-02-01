@@ -38,10 +38,10 @@ export default function App() {
         <NavBar user={user} setUser={setUser} />
       </AppBar>
       <Container className={classes.mainContainer}>
-        <Switch>
-          <Route path="/log-in">
+        {!user ? 
             <AuthPage setUser={setUser}/>
-          </Route>
+          :
+        <Switch>
           <Route path="/order">
             <OrderPage 
               user={user}
@@ -63,8 +63,13 @@ export default function App() {
               handleDelivery={handleDelivery}
             />
           </Route>
+          {user ? 
           <Redirect to="/" />
+          :
+          <Redirect to="/log-in" />
+          }
         </Switch>
+        }
       </Container>
           <Footer />
     </Container>
