@@ -5,6 +5,7 @@ import CreaditCard from '@material-ui/icons/CreditCard'
 import MenuNavBar from '../../components/MenuNavBar/MenuNavBar'
 import MenuCard from '../../components/MenuCard/MenuCard'
 import OrderDetail from '../../components/OrderDetail/OrderDetail'
+import CheckOutPage from '../CheckOutPage/CheckOutPage'
 
 import * as itemsAPI from '../../utilities/items-api';
 import * as ordersAPI from '../../utilities/orders-api';
@@ -19,8 +20,6 @@ export default function OrderPage({ user, pickUp, handlePickUp, handleDelivery }
   const [menuItems, setMenuItems] = useState([]);
   const [cart, setCart] = useState(null);
   const [open, setOpen] = useState(false);
-
-  // console.log(menuItems.filter(item => item.category.name !== 'Sake'))
 
 
   const classes = useStyle();
@@ -71,7 +70,7 @@ export default function OrderPage({ user, pickUp, handlePickUp, handleDelivery }
 
   async function handleCheckOut() {
     await ordersAPI.checkOut();
-    histroy.push('/confirmation')
+    histroy.push('/stripe')
   }
 
   const handleDrawerOpen = () => {

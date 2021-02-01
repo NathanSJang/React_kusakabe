@@ -20,7 +20,6 @@ export default function ConfirmationPage({ user }) {
     getorders();
   }, []);
 
-  console.log(orderHistory)
 
   function handleBackToHome() {
     histroy.push('/');

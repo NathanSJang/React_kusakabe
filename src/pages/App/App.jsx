@@ -7,7 +7,8 @@ import OrderPage from '../OrderPage/OrderPage';
 import NavBar from '../../components/NavBar/NavBar';
 import Footer from '../../components/Footer/Footer';
 import HomePage from '../HomePage/HomePage';
-import ConfirmationPage from '../ConfirmationPage/ConfirmationPage'
+import ConfirmationPage from '../ConfirmationPage/ConfirmationPage';
+import CheckOutPage from '../CheckOutPage/CheckOutPage';
 
 import useStyles from "./styles";
 
@@ -51,6 +52,9 @@ export default function App() {
           </Route>
           <Route path="/confirmation">
             <ConfirmationPage user={user} />
+          </Route>
+          <Route path="/stripe">
+            <CheckOutPage user={user} />
           </Route>
           <Route path="/">
             <HomePage
