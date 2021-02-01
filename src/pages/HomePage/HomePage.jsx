@@ -61,9 +61,7 @@ export default function HomePage({ pickUp, handlePickUp, handleDelivery }) {
             </div>
           </Container>
           <Container container>
-            <Grid item sm={12}>
               <Locations />
-            </Grid>
           </Container>
       </>
     );
