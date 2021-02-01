@@ -8,5 +8,9 @@ export default makeStyles((theme) => ({
     borderRadius: '15px',
     height: '100%',
     position: 'relative',
+  },
+  addBtn: {
+    display: 'flex',
+    justifyContent: 'flex-end',
   }
 }));

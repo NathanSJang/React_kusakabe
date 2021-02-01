@@ -5,6 +5,5 @@ export default makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-evenly',
-    
-  }
+  },
 }));

@@ -5,7 +5,7 @@ export default function MenuItem({ item, handleAddToCart }) {
   const classes = useStyles();
 
   return (
-    <Grid item xs={6}>
+    <Grid item xs={12} md={6} lg={6}>
       <Card className={classes.menuItem}>
         <CardContent>
         <Typography variant="body2">{item.name}</Typography>
@@ -13,8 +13,12 @@ export default function MenuItem({ item, handleAddToCart }) {
         <Typography variant="body2">{item.description}</Typography>
         <Typography variant="body2">${item.price}</Typography>
         </CardContent>
-        <CardActions>
-          <Button variant="contained" color="primary" onClick={() => handleAddToCart(item._id)}>
+        <CardActions className={classes.addBtn}>
+          <Button
+            variant="contained" 
+            color="primary" 
+            onClick={() => handleAddToCart(item._id)}
+          >
             Add
           </Button>
         </CardActions>

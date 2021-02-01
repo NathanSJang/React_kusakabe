@@ -103,8 +103,7 @@ export default function OrderPage({ user, pickUp, handlePickUp, handleDelivery }
       </Button> 
       <MenuNavBar  categories={categories} />
       <Grow in>
-      <Container>
-        <Grid container justify="space-between" alignItems="stretch"  spacing={3}>
+      <Container className={classes.topMargin} justify="space-between" alignItems="stretch"  spacing={3}>
           <Grid item >
             <MenuCard 
               menuItems={menuItems}
@@ -112,7 +111,6 @@ export default function OrderPage({ user, pickUp, handlePickUp, handleDelivery }
               handleAddToCart={handleAddToCart}
             />
           </Grid>
-        </Grid>
       </Container>
       </Grow>
       <Grid className={classes.viewOrderBtn}>

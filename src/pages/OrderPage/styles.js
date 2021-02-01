@@ -12,4 +12,7 @@ export default makeStyles((theme) => ({
   rightMargin: {
     marginRight: '2vmin',
   },
+  topMargin: {
+    marginTop: '4vmin',
+  },
 }));
