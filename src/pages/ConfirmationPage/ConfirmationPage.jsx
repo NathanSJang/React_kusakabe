@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useHistory } from "react-router-dom";
 import OrderDetail from '../../components/OrderDetail/OrderDetail';
-import { Button, Paper, Container } from "@material-ui/core";
+import { Button, Grid, Typography } from "@material-ui/core";
 import * as ordersAPI from '../../utilities/orders-api';
 
 import useStyle from './styles.js'
@@ -26,21 +26,26 @@ export default function ConfirmationPage({ user }) {
   };
 
   return(
-    <Container className={classes.mainContainer}>
-      <h1>Comfirmation Page</h1>
-        <OrderDetail 
-          cart={orderHistory}
-          user={user}
-        />
-      <div  className={classes.backToHomeBtn}>
-        <Button
-          variant="contained" 
-          color="primary"
-          onClick={handleBackToHome}
-        >
-          Back to Home
-        </Button>
-      </div>
-    </Container>
+    <Grid container justify="center">
+      <Grid item lg={12} justify="center">
+        <Typography className={classes.comfirmText} variant="h4" justify="center">Comfirmation</Typography>
+      </Grid>
+        <div>
+          <OrderDetail 
+            cart={orderHistory}
+            user={user}
+          />
+          <div className={classes.backToHomeBtn}>
+            <Button
+              variant="contained" 
+              color="primary"
+              onClick={handleBackToHome}
+            >
+              Back to Home
+            </Button>
+          </div>
+        </div>
+
+    </Grid>
   );
 }

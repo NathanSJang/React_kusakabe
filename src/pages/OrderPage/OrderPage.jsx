@@ -95,7 +95,7 @@ export default function OrderPage({ user, pickUp, handlePickUp, handleDelivery }
       >
         delivery
       </Button> 
-      <MenuNavBar  categories={categories} />
+      <MenuNavBar categories={categories} />
       <Grow in>
       <Container className={classes.topMargin} justify="space-between" alignItems="stretch"  spacing={3}>
           <Grid item >

@@ -30,14 +30,6 @@ export default function CheckOutPage({ user }) {
   }, []);
   console.log(cart);
 
-  // async function handleCheckOut() {
-  //   await ordersAPI.checkOut();
-  // }
-
-  // async function handleStripeCheckOut() {
-  //   await stripeAPI.checkOut();
-  // }
-
   const classes = useStyle();
 
   return(

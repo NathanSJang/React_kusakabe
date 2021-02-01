@@ -2,6 +2,7 @@ import { useState} from 'react';
 import { useHistory } from "react-router-dom";
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import { Grid } from '@material-ui/core'
+import * as ordersAPI from '../../utilities/orders-api';
 
 import useStyle from './styles.js'
 
@@ -41,7 +42,7 @@ export default function CheckOutForm({ clientSecret, cart }) {
       setError(null);
       setProcessing(false);
       setSucceeded(true);
-      cart.isPaid = true;
+      await ordersAPI.checkOut();
       histroy.push('/confirmation')
     }
   };

@@ -1,6 +1,7 @@
 const stripe = require('stripe')('sk_test_51IFth3LxbmCbUYW1DUSxYFego52g0TLMykjEdOeVMpey7MAxN8ATFsJOwRd1wH4ft3zYEjMYb8HEs9ZJXUQoVhDa00xdDZdPdC')
 const Order = require('../../models/order');
 
+
 module.exports = {
   checkOut,
 }
