@@ -8,5 +8,17 @@ export default makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     flexDirection: 'column',
+  },
+  mockCard: {
+    width: '40%',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+  },
+  textCenter: {
+    textAlign: 'center',
+  },
+  total: {
+    textAlign: 'center',
+    marginTop: '3vmin',
   }
 }));

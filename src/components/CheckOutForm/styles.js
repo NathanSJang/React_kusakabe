@@ -48,6 +48,7 @@ export default makeStyles((theme) => ({
     display: 'block',
     transition: 'all 0.2s ease',
     boxSshadow: '0px 4px 5.5px 0px rgba(0, 0, 0, 0.07)',
-    width: '100%'
+    width: '100%',
+    marginTop: '7vmin',
   }
 }));

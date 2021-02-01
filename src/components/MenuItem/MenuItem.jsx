@@ -8,8 +8,7 @@ export default function MenuItem({ item, handleAddToCart }) {
     <Grid item xs={12} md={6} lg={6}>
       <Card className={classes.menuItem}>
         <CardContent>
-        <Typography variant="body2">{item.name}</Typography>
-        <Typography variant="body2">{item._id}</Typography>
+        <Typography className={classes.subTitle} variant="subtitle1">{item.name}</Typography>
         <Typography variant="body2">{item.description}</Typography>
         <Typography variant="body2">${item.price}</Typography>
         </CardContent>

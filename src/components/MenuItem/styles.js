@@ -12,5 +12,8 @@ export default makeStyles((theme) => ({
   addBtn: {
     display: 'flex',
     justifyContent: 'flex-end',
+  },
+  subTitle: {
+    marginBottom: '2vmin'
   }
 }));

@@ -3,6 +3,7 @@ import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
 import CheckOutForm from '../../components/CheckOutForm/CheckOutForm'
 import { Typography, Paper, Container } from '@material-ui/core'
+import mockCard from '../../images/mockcard.png'
 import * as ordersAPI from '../../utilities/orders-api';
 import * as stripeAPI from '../../utilities/stripe-api';
 
@@ -27,7 +28,7 @@ export default function CheckOutPage({ user }) {
       setCart(cart);
     }
     getCart();
-  }, []);
+  }, [user]);
   console.log(cart);
 
   const classes = useStyle();
@@ -35,7 +36,11 @@ export default function CheckOutPage({ user }) {
   return(
     <Container className={classes.mainContainer}>
       <Paper className={classes.checkOutPaper}>
-        <Typography>Put '42' untill End for test</Typography>
+      <img className={classes.mockCard} src={mockCard} alt="mock card"/>
+        <Typography className={classes.textCenter}>
+          Info: Please type number '42' untill end of input for Mock payment
+        </Typography>
+        <Typography className={classes.total}>Total: ${cart.orderTotal}</Typography>
         <Elements stripe={promise}>
           <CheckOutForm
             cart={cart}
