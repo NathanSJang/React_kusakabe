@@ -10,6 +10,7 @@ import HomePage from '../HomePage/HomePage';
 import ConfirmationPage from '../ConfirmationPage/ConfirmationPage';
 import CheckOutPage from '../CheckOutPage/CheckOutPage';
 import AboutUsPage from '../AboutUsPage/AboutUsPage';
+import PolicyPage from '../PolicyPage/PolicyPage';
 
 import useStyles from "./styles";
 
@@ -59,6 +60,9 @@ export default function App() {
           </Route>
           <Route path="/aboutUs">
             <AboutUsPage user={user} />
+          </Route>
+          <Route path="/policy">
+            <PolicyPage user={user} />
           </Route>
           <Route path="/">
             <HomePage
