@@ -11,6 +11,7 @@ export default function ConfirmationPage({ user }) {
 
   const classes = useStyle();
   const histroy = useHistory();
+  console.log(orderHistory)
 
   useEffect(() => {
     async function getorders() {
@@ -31,10 +32,16 @@ export default function ConfirmationPage({ user }) {
         <Typography className={classes.comfirmText} variant="h4" justify="center">Comfirmation</Typography>
       </Grid>
         <div>
-          <OrderDetail 
-            cart={orderHistory}
-            user={user}
-          />
+          { !orderHistory ?
+            <Typography  variant="h6" justify="center">
+              Please Order from US
+            </Typography>
+            :
+            <OrderDetail 
+              cart={orderHistory}
+              user={user}
+            />
+          }
           <div className={classes.backToHomeBtn}>
             <Button
               variant="contained" 

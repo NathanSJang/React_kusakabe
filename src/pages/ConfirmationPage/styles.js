@@ -10,5 +10,8 @@ export default makeStyles((theme) => ({
   comfirmText: {
     textAlign: 'center',
     marginBottom: '2vmin',
+  },
+  height:{
+    height: '70vh'
   }
 }));
