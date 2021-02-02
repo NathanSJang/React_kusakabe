@@ -14,17 +14,13 @@ const promise = loadStripe('pk_test_51IFth3LxbmCbUYW1tdniXN0CcKQA170ZQ41QAYkXAjK
 export default function CheckOutPage({ getCart, user }) {
   const [clientSecret, setClientSecret] = useState('');
 
-
-
-
   useEffect(() => {
-    async function stripeCheckOut(user) {
-      await stripeAPI.checkOut(user)
+    async function stripeCheckOut() {
+      await stripeAPI.checkOut()
         .then(data => {setClientSecret(data.clientSecret)});
     }
     stripeCheckOut();
   }, []);
-
 
   const classes = useStyle();
 
