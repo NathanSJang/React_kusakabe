@@ -11,5 +11,9 @@ export default makeStyles((theme) => ({
   contentText: {
     marginBottom: '1vmin',
     marginTop: '1vmin',
+  },
+  responsiveImage: {
+    width: '99.5%',
+    height: 'auto',
   }
 }));

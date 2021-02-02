@@ -47,11 +47,11 @@ export default function CheckOutForm({ clientSecret, cart }) {
   return(
     <form className={classes.form} id="payment-form" onSubmit={handleSubmit}>
       <Grid container>
-        <Grid item sm={12} lg={12}>
+        <Grid item xs={12}>
           <CardElement className={classes.cardStyle} id="card-element"  onChange={handleChange} />
         </Grid>
       </Grid>
-      <Grid sm={12}>
+      <Grid xs={12}>
         <button
           className={classes.btn}
           disabled={processing || disabled || succeeded}

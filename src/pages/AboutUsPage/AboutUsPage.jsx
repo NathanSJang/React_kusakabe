@@ -7,7 +7,7 @@ export default function AboutUsPage() {
 
   return(
     <Container className={classes.bottomMaring}>
-      <img src={k33} alt="aboutUs"/>
+      <img className={classes.responsiveImage} src={k33} alt="aboutUs"/>
       <div className={classes.titleText}>
         <Typography  variant='h6'>
           Owner Chef

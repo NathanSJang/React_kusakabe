@@ -7,7 +7,7 @@ export default function PolicyPage() {
 
   return(
     <Container className={classes.bottomMaring}>
-      <img src={k22} alt="policyPage" />
+      <img className={classes.responsiveImage} src={k22} alt="policyPage" />
       <Typography className={classes.titleText} variant='h4'>
         COVID-19 Policy and Safety Plans
       </Typography>
