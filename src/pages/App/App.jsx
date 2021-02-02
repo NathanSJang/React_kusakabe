@@ -29,11 +29,12 @@ export default function App() {
 
   useEffect(() => {
     async function getCart() {
+      if(!user) return null
       cartRef.current = await ordersAPI.getCart();
       setgetCart(cartRef.current)
     }
     getCart();
-  }, []);
+  }, [user]);
 
   async function handlePickUp() {
     setPickUp(true);
@@ -48,7 +49,7 @@ export default function App() {
   
 
   return (
-    <Container className="App" className={classes.app} >
+    <Container className={classes.app} >
       <AppBar item className={classes.appBar} color="inherit" position="sticky">
         <NavBar user={user} setUser={setUser} />
       </AppBar>
