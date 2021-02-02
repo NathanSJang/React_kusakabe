@@ -11,16 +11,14 @@ import * as ordersAPI from '../../utilities/orders-api';
 
 import useStyle from './styles.js'
 
-export default function OrderPage({ user, pickUp, handlePickUp, handleDelivery }) {
+export default function OrderPage({ user, pickUp, handlePickUp, handleDelivery, setgetCart, getCart }) {
   const [categories, setCategories] = useState([]);
   const [menuItems, setMenuItems] = useState([]);
-  const [cart, setCart] = useState(null);
   const [open, setOpen] = useState(false);
 
 
   const classes = useStyle();
   const categoriesRef = useRef();
-  const cartRef = useRef()
   const histroy = useHistory();
 
   useEffect(() => {
@@ -39,24 +37,17 @@ export default function OrderPage({ user, pickUp, handlePickUp, handleDelivery }
       setMenuItems(items);
     }
     getItems();
-
-    // get Cart
-    async function getCart() {
-      cartRef.current = await ordersAPI.getCart();
-      setCart(cartRef.current);
-    }
-    getCart();
   }, [pickUp])
 
   /* Event handler */ 
   async function handleAddToCart(itemId) {
     const cart = await ordersAPI.addItemToCart(itemId);
-    setCart(cart);
+    setgetCart(cart);
   }
 
   async function handleChangeQty(itemId, newQty) {
     const cart = await ordersAPI.setItemQtyInCart(itemId, newQty);
-    setCart(cart);
+    setgetCart(cart);
   }
   
   async function handleBackToHome() {
@@ -113,7 +104,7 @@ export default function OrderPage({ user, pickUp, handlePickUp, handleDelivery }
       <Drawer variant="persistent" anchor="bottom" open={open}>
           <OrderDetail
             user={user}
-            cart={cart} 
+            cart={getCart} 
             handleDrawerClose={handleDrawerClose}
             handleChangeQty={handleChangeQty}
             handleCheckOut={handleCheckOut}

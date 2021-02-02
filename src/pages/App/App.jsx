@@ -61,6 +61,8 @@ export default function App() {
             <OrderPage 
               user={user}
               pickUp={pickUp}
+              getCart={getCart}
+              setgetCart={setgetCart}
               handlePickUp={handlePickUp}
               handleDelivery={handleDelivery}
             />

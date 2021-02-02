@@ -13,9 +13,6 @@ const promise = loadStripe('pk_test_51IFth3LxbmCbUYW1tdniXN0CcKQA170ZQ41QAYkXAjK
 
 export default function CheckOutPage({ getCart, user }) {
   const [clientSecret, setClientSecret] = useState('');
-  const [cart, setCart] = useState(getCart);
-  console.log(getCart);
-  console.log(cart)
 
 
 
@@ -38,10 +35,10 @@ export default function CheckOutPage({ getCart, user }) {
         <Typography className={classes.textCenter}>
           Info: Please type number '42' untill end of input for Mock payment
         </Typography>
-        <Typography className={classes.total}>Total: ${cart.orderTotal}</Typography>
+        <Typography className={classes.total}>Total: ${getCart.orderTotal}</Typography>
         <Elements stripe={promise}>
           <CheckOutForm
-            cart={cart}
+            cart={getCart}
             user={user}
             clientSecret={clientSecret} 
           />
