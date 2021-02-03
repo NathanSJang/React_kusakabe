@@ -25,7 +25,7 @@ An Mock online order MERN-Stack app/website for my ex-work place
 
 # Getting started
 
-- [Visit MyShtuff](https://myshtuff.herokuapp.com/)
+- [Visit KUSAKABE](https://myshtuff.herokuapp.com/)
 - [Trello link](https://trello.com/b/Zd1QP3Xy/nathan-react-kusakabe-project)
 
 # Next steps:
