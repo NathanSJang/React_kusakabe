@@ -19,6 +19,7 @@ export default function AuthPage({ setUser }) {
       {showLogin ?
       <Grid md={12}>
         <h1 className={classes.authText}>Please Log-In to order</h1>
+        <h1 className={classes.authText}>ID: test@email.com PW: test</h1>
         <LoginForm setUser={setUser} />
       </Grid>
         :

@@ -1,5 +1,5 @@
-import { AppBar, Button } from '@material-ui/core'
-import { Link } from 'react-scroll'
+import { AppBar, Button } from '@material-ui/core';
+import { Link } from 'react-scroll';
 import useStyles from './styles';
 
 export default function MenuNavBar({ categories }) {
