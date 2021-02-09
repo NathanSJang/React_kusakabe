@@ -55,47 +55,47 @@ export default function App() {
       </AppBar>
       <Container className={classes.mainContainer}>
         {!user ? 
-            <AuthPage setUser={setUser}/>
+          <AuthPage setUser={setUser}/>
           :
-        <Switch>
-          <Route path="/order">
-            <OrderPage 
-              user={user}
-              pickUp={pickUp}
-              getCart={getCart}
-              setgetCart={setgetCart}
-              handlePickUp={handlePickUp}
-              handleDelivery={handleDelivery}
-            />
-          </Route>
-          <Route path="/confirmation">
-            <ConfirmationPage user={user} />
-          </Route>
-          <Route path="/stripe">
-            <CheckOutPage getCart={getCart} user={user} />
-          </Route>
-          <Route path="/aboutUs">
-            <AboutUsPage user={user} />
-          </Route>
-          <Route path="/policy">
-            <PolicyPage user={user} />
-          </Route>
-          <Route path="/">
-            <HomePage
-              pickUp={pickUp}
-              handlePickUp={handlePickUp}
-              handleDelivery={handleDelivery}
-            />
-          </Route>
-          {user ? 
-          <Redirect to="/" />
-          :
-          <Redirect to="/log-in" />
-          }
-        </Switch>
+          <Switch>
+            <Route path="/order">
+              <OrderPage 
+                user={user}
+                pickUp={pickUp}
+                getCart={getCart}
+                setgetCart={setgetCart}
+                handlePickUp={handlePickUp}
+                handleDelivery={handleDelivery}
+              />
+            </Route>
+            <Route path="/confirmation">
+              <ConfirmationPage user={user} />
+            </Route>
+            <Route path="/stripe">
+              <CheckOutPage getCart={getCart} user={user} />
+            </Route>
+            <Route path="/aboutUs">
+              <AboutUsPage user={user} />
+            </Route>
+            <Route path="/policy">
+              <PolicyPage user={user} />
+            </Route>
+            <Route path="/">
+              <HomePage
+                pickUp={pickUp}
+                handlePickUp={handlePickUp}
+                handleDelivery={handleDelivery}
+              />
+            </Route>
+            {user ? 
+            <Redirect to="/" />
+            :
+            <Redirect to="/log-in" />
+            }
+          </Switch>
         }
       </Container>
-          <Footer />
+        <Footer />
     </Container>
   );
 }

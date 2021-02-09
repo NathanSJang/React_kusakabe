@@ -5,6 +5,7 @@
   align-items: center;
   justify-content: space-between;
   flex-shrink: 0;
+  max-width: 100%;
 }
 
 .footerLogo {
